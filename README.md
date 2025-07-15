@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="th">
 <head>
     <meta charset="UTF-8">
@@ -5,7 +6,7 @@
     <title>ระบบแปลภาษา (ไทย ↔ จีน) ด้วยเสียง (Gemini AI)</title>
     <link rel="icon" href="https://makubtrader.com/ccdc/Favicon.png" type="image/png" sizes="16x16">
     <link rel="icon" href="https://makubtrader.com/ccdc/Favicon.png" type="image/png" sizes="32x32">
-    <link rel="apple-touch-icon" href="https://makubtrader.com/ccdc/Favicon.png">
+    <link rel="apple-touch-icon" href="https://makubtrader.com/ccdc/Favicon.com">
     <link rel="shortcut icon" href="https://makubtrader.com/ccdc/Favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
@@ -111,6 +112,7 @@
             transform: none; /* No hover effect on active */
             pointer-events: none; /* Disable clicks on active */
         }
+
 
         .section {
             margin-bottom: 25px; /* Reduced margin between sections */
@@ -392,7 +394,7 @@
         }
 
         @keyframes pulse {
-            0%, 40%, 100% { transform: scale(1); box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); } /* Adjusted shadow */
+            0% { transform: scale(1); box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); } /* Adjusted shadow */
             50% { transform: scale(1.02); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); } /* Adjusted scale and shadow */
             100% { transform: scale(1); box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); }
         }
@@ -486,13 +488,14 @@
 </head>
 <body>
     <div class="container">
-        <h1>🎤 ระบบแปลภาษา (ไทย ↔ เกาหลี)</h1>
+        <h1>🎤 ระบบแปลภาษา (ไทย ↔ จีน)</h1>
         
+        <!-- Language Switcher -->
         <div class="language-switcher">
             <a href="https://nessakura.github.io/thai-english-voice-translator/" class="nav-btn" id="navEnglish">🇹🇭-🇬🇧</a>
             <a href="https://nessakura.github.io/thai-japan-voice-translator/" class="nav-btn" id="navJapanese">🇹🇭-🇯🇵</a>
             <a href="https://nessakura.github.io/thai-korea-voice-translator/" class="nav-btn" id="navKorean">🇹🇭-🇰🇷</a>
-            <a href="https://nessakura.github.io/thai-china-voice-translator/" class="nav-btn" id="navChinese">🇹🇭-🇨🇳</a>
+            <a href="https://nessakura.github.io/thai-china-voice-translator/" class="nav-btn active" id="navChinese">🇹🇭-🇨🇳</a>
         </div>
 
         <div class="api-setup" id="apiSetupSection">
@@ -527,16 +530,16 @@
         </div>
 
         <div class="mode-selector">
-            <button class="btn btn-primary active" id="modeThaiToKoreanBtn">
-                🇹🇭 ➡️ 🇰🇷
+            <button class="btn btn-primary active" id="modeThaiToChineseBtn">
+                🇹🇭 ➡️ 🇨🇳
             </button>
-            <button class="btn btn-primary" id="modeKoreanToThaiBtn">
-                🇰🇷 ➡️ 🇹🇭
+            <button class="btn btn-primary" id="modeChineseToThaiBtn">
+                🇨🇳 ➡️ 🇹🇭
             </button>
         </div>
 
-        <div class="section" id="thaiToKoreanSection">
-            <h2><span class="icon">🇹🇭➡️🇰🇷</span> ไทย ➡️ เกาหลี</h2>
+        <div class="section" id="thaiToChineseSection">
+            <h2><span class="icon">🇹🇭➡️🇨🇳</span> ไทย ➡️ จีน</h2>
             <div class="voice-controls">
                 <button class="btn btn-primary" id="startThaiBtn" disabled>
                     <span>🎤</span> เริ่มพูด (ไทย)
@@ -552,31 +555,31 @@
             
             <h3>ข้อความภาษาไทย:</h3>
             <textarea id="thaiText" placeholder="พูดหรือพิมพ์ข้อความภาษาไทย..."></textarea>
-            <button class="btn btn-primary translate-btn" id="translateThaiToKoreanBtn" disabled>
-                <span>🔄</span> แปลเป็นภาษาเกาหลี
+            <button class="btn btn-primary translate-btn" id="translateThaiToChineseBtn" disabled>
+                <span>🔄</span> แปลเป็นภาษาจีน
             </button>
             
-            <h3 style="margin-top: 20px;">ผลการแปล (ภาษาเกาหลี):</h3>
-            <textarea id="koreanText" placeholder="ผลการแปลจะแสดงที่นี่..." readonly></textarea>
-            <button class="btn btn-info translate-btn" id="listenKoreanBtn" disabled>
-                <span>🔊</span> อ่านออกเสียง (เกาหลี)
+            <h3 style="margin-top: 20px;">ผลการแปล (ภาษาจีน):</h3>
+            <textarea id="chineseText" placeholder="ผลการแปลจะแสดงที่นี่..." readonly></textarea>
+            <button class="btn btn-info translate-btn" id="listenChineseBtn" disabled>
+                <span>🔊</span> อ่านออกเสียง (จีน)
             </button>
         </div>
 
-        <div class="section result-section" id="koreanToThaiSection" style="display: none;">
-            <h2><span class="icon">🇰🇷➡️🇹🇭</span> เกาหลี ➡️ ไทย</h2>
+        <div class="section result-section" id="chineseToThaiSection" style="display: none;">
+            <h2><span class="icon">🇨🇳➡️🇹🇭</span> จีน ➡️ ไทย</h2>
             <div class="voice-controls">
-                <button class="btn btn-info" id="startKoreanBtn" disabled>
-                    <span>🎙️</span> เริ่มพูด (เกาหลี)
+                <button class="btn btn-info" id="startChineseBtn" disabled>
+                    <span>🎙️</span> เริ่มพูด (จีน)
                 </button>
-                <button class="btn btn-danger" id="stopKoreanBtn" disabled>
+                <button class="btn btn-danger" id="stopChineseBtn" disabled>
                     <span>⏹️</span> หยุดบันทึก
                 </button>
             </div>
             
-            <h3>ข้อความภาษาเกาหลี:</h3>
-            <textarea id="koreanListenText" placeholder="พูดหรือพิมพ์ข้อความภาษาเกาหลี..."></textarea>
-            <button class="btn btn-primary translate-btn" id="translateKoreanToThaiBtn" disabled>
+            <h3>ข้อความภาษาจีน:</h3>
+            <textarea id="chineseListenText" placeholder="พูดหรือพิมพ์ข้อความภาษาจีน..."></textarea>
+            <button class="btn btn-primary translate-btn" id="translateChineseToThaiBtn" disabled>
                 <span>🔄</span> แปลเป็นภาษาไทย
             </button>
             
@@ -592,14 +595,14 @@
         class BiDirectionalVoiceTranslator {
             constructor() {
                 this.geminiApiKey = localStorage.getItem('geminiApiKey') || '';
-                this.speechSynthesisUtteranceKorean = null;
+                this.speechSynthesisUtteranceChinese = null; 
                 this.speechSynthesisUtteranceThai = null;
-                this.currentMode = 'thaiToKorean'; // Default mode: Thai to Korean
+                this.currentMode = 'thaiToChinese'; // Default mode: Thai to Chinese
 
                 this.initializeElements();
                 this.setupGlobalEventListeners();
-                this.setupThaiToKoreanMode();
-                this.setupKoreanToThaiMode();
+                this.setupThaiToChineseMode(); 
+                this.setupChineseToThaiMode(); 
                 this.checkApiKeyStatus();
                 this.switchMode(this.currentMode); // Set initial display mode
                 this.highlightActiveNavButton(); // Highlight the current page's button
@@ -615,25 +618,25 @@
                 this.clearAllBtn = document.getElementById('clearAllBtn');
 
                 // Mode selector buttons
-                this.modeThaiToKoreanBtn = document.getElementById('modeThaiToKoreanBtn');
-                this.modeKoreanToThaiBtn = document.getElementById('modeKoreanToThaiBtn');
-                this.thaiToKoreanSection = document.getElementById('thaiToKoreanSection');
-                this.koreanToThaiSection = document.getElementById('koreanToThaiSection');
+                this.modeThaiToChineseBtn = document.getElementById('modeThaiToChineseBtn'); 
+                this.modeChineseToThaiBtn = document.getElementById('modeChineseToThaiBtn'); 
+                this.thaiToChineseSection = document.getElementById('thaiToChineseSection'); 
+                this.chineseToThaiSection = document.getElementById('chineseToThaiSection'); 
 
 
-                // Thai to Korean elements
+                // Thai to Chinese elements
                 this.startThaiBtn = document.getElementById('startThaiBtn');
                 this.stopThaiBtn = document.getElementById('stopThaiBtn');
                 this.thaiText = document.getElementById('thaiText');
-                this.translateThaiToKoreanBtn = document.getElementById('translateThaiToKoreanBtn');
-                this.koreanText = document.getElementById('koreanText');
-                this.listenKoreanBtn = document.getElementById('listenKoreanBtn');
+                this.translateThaiToChineseBtn = document.getElementById('translateThaiToChineseBtn'); 
+                this.chineseText = document.getElementById('chineseText'); 
+                this.listenChineseBtn = document.getElementById('listenChineseBtn'); 
 
-                // Korean to Thai elements
-                this.startKoreanBtn = document.getElementById('startKoreanBtn');
-                this.stopKoreanBtn = document.getElementById('stopKoreanBtn');
-                this.koreanListenText = document.getElementById('koreanListenText');
-                this.translateKoreanToThaiBtn = document.getElementById('translateKoreanToThaiBtn');
+                // Chinese to Thai elements
+                this.startChineseBtn = document.getElementById('startChineseBtn'); 
+                this.stopChineseBtn = document.getElementById('stopChineseBtn'); 
+                this.chineseListenText = document.getElementById('chineseListenText'); 
+                this.translateChineseToThaiBtn = document.getElementById('translateChineseToThaiBtn'); 
                 this.thaiTranslatedText = document.getElementById('thaiTranslatedText');
                 this.listenThaiBtn = document.getElementById('listenThaiBtn');
             }
@@ -658,15 +661,17 @@
                 this.clearAllBtn.addEventListener('click', () => this.clearAll());
                 
                 // Mode selector event listeners
-                this.modeThaiToKoreanBtn.addEventListener('click', () => this.switchMode('thaiToKorean'));
-                this.modeKoreanToThaiBtn.addEventListener('click', () => this.switchMode('koreanToThai'));
+                this.modeThaiToChineseBtn.addEventListener('click', () => this.switchMode('thaiToChinese')); 
+                this.modeChineseToThaiBtn.addEventListener('click', () => this.switchMode('chineseToThai')); 
             }
 
+            // New method to highlight the active navigation button
             highlightActiveNavButton() {
                 const navButtons = document.querySelectorAll('.language-switcher .nav-btn');
                 navButtons.forEach(button => {
+                    // Check if the button's href matches the current window's location (URL)
                     if (button.href === window.location.href) {
-                        button.classList.add('active');
+                        button.classList.add('active'); // Add 'active' class to highlight it
                     }
                 });
             }
@@ -676,25 +681,43 @@
                 this.stopAllAudioAndRecognition();
                 this.clearAllTextareas(); // Clear textareas when switching mode
 
-                if (mode === 'thaiToKorean') {
-                    this.thaiToKoreanSection.style.display = 'block';
-                    this.koreanToThaiSection.style.display = 'none';
-                    this.modeThaiToKoreanBtn.classList.add('active');
-                    this.modeKoreanToThaiBtn.classList.remove('active');
-                    this.updateStatus('พร้อมใช้งาน: ไทย ➡️ เกาหลี', 'success');
-                } else { // koreanToThai
-                    this.thaiToKoreanSection.style.display = 'none';
-                    this.koreanToThaiSection.style.display = 'block';
-                    this.modeThaiToKoreanBtn.classList.remove('active');
-                    this.modeKoreanToThaiBtn.classList.add('active');
-                    this.updateStatus('พร้อมใช้งาน: เกาหลี ➡️ ไทย', 'success');
+                if (mode === 'thaiToChinese') { 
+                    this.thaiToChineseSection.style.display = 'block'; 
+                    this.chineseToThaiSection.style.display = 'none'; 
+                    this.modeThaiToChineseBtn.classList.add('active'); 
+                    this.modeChineseToThaiBtn.classList.remove('active'); 
+                    this.updateStatus('พร้อมใช้งาน: ไทย ➡️ จีน', 'success'); 
+                } else { // chineseToThai
+                    this.thaiToChineseSection.style.display = 'none'; 
+                    this.chineseToThaiSection.style.display = 'block'; 
+                    this.modeThaiToChineseBtn.classList.remove('active'); 
+                    this.modeChineseToThaiBtn.classList.add('active'); 
+                    this.updateStatus('พร้อมใช้งาน: จีน ➡️ ไทย', 'success'); 
                 }
                 this.checkApiKeyStatus(); // Re-check and enable features based on API key
             }
 
+            checkApiKeyStatus() {
+                if (this.geminiApiKey) {
+                    this.apiSetupSection.style.display = 'none';
+                    this.apiKeyStatusDisplay.style.display = 'flex';
+                    this.updateStatus(`พร้อมใช้งาน: ${this.currentMode === 'thaiToChinese' ? 'ไทย ➡️ จีน' : 'จีน ➡️ ไทย'}`, 'success'); 
+                    this.enableAllFeatures();
+                } else {
+                    this.apiSetupSection.style.display = 'block';
+                    this.apiKeyInput.value = '';
+                    this.apiKeyInput.disabled = false;
+                    this.saveApiKeyBtn.style.display = 'inline-block';
+                    this.removeApiKeyBtn.style.display = 'none';
+                    this.apiKeyStatusDisplay.style.display = 'none';
+                    this.updateStatus('กรุณาใส่ Gemini API Key ก่อนใช้งาน', 'error');
+                    this.disableAllFeatures();
+                }
+            }
+
             enableAllFeatures() {
                 this.startThaiBtn.disabled = false;
-                this.startKoreanBtn.disabled = false;
+                this.startChineseBtn.disabled = false; 
                 this.updateTranslateButtonStates();
                 this.updateListenButtonStates();
             }
@@ -702,12 +725,12 @@
             disableAllFeatures() {
                 this.startThaiBtn.disabled = true;
                 this.stopThaiBtn.disabled = true;
-                this.translateThaiToKoreanBtn.disabled = true;
-                this.listenKoreanBtn.disabled = true;
+                this.translateThaiToChineseBtn.disabled = true; 
+                this.listenChineseBtn.disabled = true; 
 
-                this.startKoreanBtn.disabled = true;
-                this.stopKoreanBtn.disabled = true;
-                this.translateKoreanToThaiBtn.disabled = true;
+                this.startChineseBtn.disabled = true; 
+                this.stopChineseBtn.disabled = true; 
+                this.translateChineseToThaiBtn.disabled = true; 
                 this.listenThaiBtn.disabled = true;
             }
 
@@ -725,7 +748,7 @@
                 this.geminiApiKey = inputKey;
                 localStorage.setItem('geminiApiKey', this.geminiApiKey);
                 this.checkApiKeyStatus();
-                this.updateStatus(`บันทึก API Key เรียบร้อย! พร้อมใช้งาน: ${this.currentMode === 'thaiToKorean' ? 'ไทย ➡️ เกาหลี' : 'เกาหลี ➡️ ไทย'}`, 'success');
+                this.updateStatus(`บันทึก API Key เรียบร้อย! พร้อมใช้งาน: ${this.currentMode === 'thaiToChinese' ? 'ไทย ➡️ จีน' : 'จีน ➡️ ไทย'}`, 'success'); 
             }
 
             removeApiKey() {
@@ -747,12 +770,12 @@
             }
 
             updateTranslateButtonStates() {
-                this.translateThaiToKoreanBtn.disabled = !this.thaiText.value.trim() || !this.geminiApiKey;
-                this.translateKoreanToThaiBtn.disabled = !this.koreanListenText.value.trim() || !this.geminiApiKey;
+                this.translateThaiToChineseBtn.disabled = !this.thaiText.value.trim() || !this.geminiApiKey; 
+                this.translateChineseToThaiBtn.disabled = !this.chineseListenText.value.trim() || !this.geminiApiKey; 
             }
 
             updateListenButtonStates() {
-                this.listenKoreanBtn.disabled = !this.koreanText.value.trim();
+                this.listenChineseBtn.disabled = !this.chineseText.value.trim(); 
                 this.listenThaiBtn.disabled = !this.thaiTranslatedText.value.trim();
             }
 
@@ -770,14 +793,14 @@
 
             clearAllTextareas() {
                 this.thaiText.value = '';
-                this.koreanText.value = '';
-                this.koreanListenText.value = '';
+                this.chineseText.value = ''; 
+                this.chineseListenText.value = ''; 
                 this.thaiTranslatedText.value = '';
             }
 
             stopAllAudioAndRecognition() {
                 if (this.isRecordingThai) this.stopRecordingThai();
-                if (this.isRecordingKorean) this.stopRecordingKorean();
+                if (this.isRecordingChinese) this.stopRecordingChinese(); 
                 if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
             }
 
@@ -814,8 +837,11 @@
 
                     if (!response.ok) {
                         const errorData = await response.json();
-                        if (errorData.error && errorData.error.status === 'RESOURCE_EXHAUSTED') {
-                             throw new Error('โควต้าการใช้งาน API หมด กรุณาลองใหม่ภายหลัง');
+                        // Check for specific API error messages related to overloading or resource exhaustion
+                        if (errorData.error) {
+                            if (errorData.error.status === 'RESOURCE_EXHAUSTED' || errorData.error.message.includes('overloaded')) {
+                                throw new Error('โมเดลมีการใช้งานมากเกินไป (Overloaded). กรุณาลองใหม่อีกครั้งในภายหลัง.');
+                            }
                         }
                         throw new Error(errorData.error.message || `HTTP error! status: ${response.status}`);
                     }
@@ -840,8 +866,8 @@
                     let errorMessage = 'ไม่สามารถแปลภาษาได้';
                     if (error.message.includes('API key not valid')) {
                         errorMessage = 'API Key ไม่ถูกต้อง กรุณาตรวจสอบและใส่ใหม่';
-                    } else if (error.message.includes('Quota') || error.message.includes('โควต้า')) {
-                        errorMessage = 'โควต้าการใช้งาน API หมด กรุณาลองใหม่ภายหลัง';
+                    } else if (error.message.includes('Quota') || error.message.includes('โควต้า') || error.message.includes('Overloaded')) {
+                        errorMessage = `เกิดข้อผิดพลาด: ${error.message}`; // Use the specific message from the thrown error
                     } else if (error.message.includes('blocked')) {
                         errorMessage = `เกิดข้อผิดพลาด: ${error.message}`;
                     } else {
@@ -864,8 +890,8 @@
                 this.updateStatus(errorMessage, 'error');
             }
 
-            // --- Thai to Korean Mode ---
-            setupThaiToKoreanMode() {
+            // --- Thai to Chinese Mode ---
+            setupThaiToChineseMode() { 
                 this.isRecordingThai = false;
                 if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
                     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -885,10 +911,10 @@
 
                 this.startThaiBtn.addEventListener('click', () => this.startRecordingThai());
                 this.stopThaiBtn.addEventListener('click', () => this.stopRecordingThai());
-                this.translateThaiToKoreanBtn.addEventListener('click', () => this.translateThaiToKorean());
-                this.listenKoreanBtn.addEventListener('click', () => this.speakKoreanText());
+                this.translateThaiToChineseBtn.addEventListener('click', () => this.translateThaiToChinese()); 
+                this.listenChineseBtn.addEventListener('click', () => this.speakChineseText()); 
                 this.thaiText.addEventListener('input', () => this.updateTranslateButtonStates());
-                this.koreanText.addEventListener('input', () => this.updateListenButtonStates());
+                this.chineseText.addEventListener('input', () => this.updateListenButtonStates()); 
             }
 
             startRecordingThai() {
@@ -896,7 +922,7 @@
                     this.updateStatus('กรุณาใส่ Gemini API Key ก่อนใช้งาน', 'error');
                     return;
                 }
-                if (this.isRecordingKorean) { this.stopRecordingKorean(); }
+                if (this.isRecordingChinese) { this.stopRecordingChinese(); } // Stop other recording if active
                 if (this.recognitionThai && !this.isRecordingThai) {
                     this.recognitionThai.start();
                 }
@@ -919,7 +945,7 @@
                 this.stopThaiBtn.disabled = false;
                 this.startThaiBtn.classList.add('recording');
                 this.thaiText.value = '';
-                this.koreanText.value = '';
+                this.chineseText.value = ''; 
                 this.updateListenButtonStates();
             }
 
@@ -945,26 +971,26 @@
                 this.stopRecordingThai();
                 if (this.thaiText.value.trim()) {
                     this.updateStatus('บันทึกเสียงไทยเสร็จสิ้น กำลังแปลภาษา...', 'processing');
-                    this.translateThaiToKorean();
+                    this.translateThaiToChinese(); 
                 } else {
                     this.updateStatus('กดปุ่ม "เริ่มพูด (ไทย)" เพื่อเริ่มต้น', 'info');
                 }
             }
 
-            async translateThaiToKorean() {
-                this.updateStatus('กำลังแปลภาษาไทยเป็นเกาหลี...', 'processing');
-                this.translateThaiToKoreanBtn.disabled = true;
-                this.koreanText.value = 'Translating...';
-                this.listenKoreanBtn.disabled = true;
+            async translateThaiToChinese() { 
+                this.updateStatus('กำลังแปลภาษาไทยเป็นจีน...', 'processing'); 
+                this.translateThaiToChineseBtn.disabled = true; 
+                this.chineseText.value = 'Translating...'; 
+                this.listenChineseBtn.disabled = true; 
 
-                const result = await this.translateText(this.thaiText.value, 'Thai', 'Korean');
-                this.koreanText.value = result;
+                const result = await this.translateText(this.thaiText.value, 'Thai', 'Chinese'); 
+                this.chineseText.value = result; 
 
                 if (result && !result.startsWith('Error:')) {
-                    this.updateStatus('แปลภาษาไทยเป็นเกาหลีเสร็จสิ้น', 'success');
-                    this.speakKoreanText();
+                    this.updateStatus('แปลภาษาไทยเป็นจีนเสร็จสิ้น', 'success'); 
+                    this.speakChineseText(); 
                 } else if (result.startsWith('Error:')) {
-                    this.koreanText.value = result;
+                    this.chineseText.value = result; 
                 } else {
                     this.updateStatus('ไม่มีข้อความให้แปล หรือเกิดข้อผิดพลาด', 'error');
                 }
@@ -972,10 +998,10 @@
                 this.updateListenButtonStates();
             }
 
-            speakKoreanText() {
-                const text = this.koreanText.value.trim();
+            speakChineseText() { 
+                const text = this.chineseText.value.trim(); 
                 if (!text || text.startsWith('Error:')) {
-                    this.updateStatus('ไม่มีข้อความภาษาเกาหลีให้อ่าน', 'info');
+                    this.updateStatus('ไม่มีข้อความภาษาจีนให้อ่าน', 'info'); 
                     return;
                 }
 
@@ -983,85 +1009,85 @@
                     window.speechSynthesis.cancel();
                 }
 
-                this.speechSynthesisUtteranceKorean = new SpeechSynthesisUtterance(text);
-                this.speechSynthesisUtteranceKorean.lang = 'ko-KR'; // Korean (Korea)
+                this.speechSynthesisUtteranceChinese = new SpeechSynthesisUtterance(text); 
+                this.speechSynthesisUtteranceChinese.lang = 'zh-CN'; // Mandarin Chinese
                 
-                this.speechSynthesisUtteranceKorean.onerror = (event) => {
-                    console.error('Speech synthesis error (Korean):', event.error);
-                    this.updateStatus(`ไม่สามารถอ่านออกเสียงภาษาเกาหลีได้: ${event.error}`, 'error');
+                this.speechSynthesisUtteranceChinese.onerror = (event) => { 
+                    console.error('Speech synthesis error (Chinese):', event.error); 
+                    this.updateStatus(`ไม่สามารถอ่านออกเสียงภาษาจีนได้: ${event.error}`, 'error'); 
                 };
-                this.speechSynthesisUtteranceKorean.onstart = () => {
-                    this.updateStatus('กำลังอ่านออกเสียง (เกาหลี)...', 'processing');
-                    this.listenKoreanBtn.disabled = true;
+                this.speechSynthesisUtteranceChinese.onstart = () => { 
+                    this.updateStatus('กำลังอ่านออกเสียง (จีน)...', 'processing'); 
+                    this.listenChineseBtn.disabled = true; 
                 };
-                this.speechSynthesisUtteranceKorean.onend = () => {
-                    this.updateStatus('อ่านออกเสียง (เกาหลี) เสร็จสิ้น', 'success');
-                    this.listenKoreanBtn.disabled = false;
+                this.speechSynthesisUtteranceChinese.onend = () => { 
+                    this.updateStatus('อ่านออกเสียง (จีน) เสร็จสิ้น', 'success'); 
+                    this.listenChineseBtn.disabled = false; 
                 };
 
-                window.speechSynthesis.speak(this.speechSynthesisUtteranceKorean);
+                window.speechSynthesis.speak(this.speechSynthesisUtteranceChinese); 
             }
 
-            // --- Korean to Thai Mode ---
-            setupKoreanToThaiMode() {
-                this.isRecordingKorean = false;
+            // --- Chinese to Thai Mode ---
+            setupChineseToThaiMode() { 
+                this.isRecordingChinese = false; 
                 if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
                     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-                    this.recognitionKorean = new SpeechRecognition();
-                    this.recognitionKorean.continuous = true;
-                    this.recognitionKorean.interimResults = true;
-                    this.recognitionKorean.lang = 'ko-KR'; // Korean (Korea)
+                    this.recognitionChinese = new SpeechRecognition(); 
+                    this.recognitionChinese.continuous = true; 
+                    this.recognitionChinese.interimResults = true; 
+                    this.recognitionChinese.lang = 'zh-CN'; // Mandarin Chinese
 
-                    this.recognitionKorean.onstart = () => this.onKoreanRecognitionStart();
-                    this.recognitionKorean.onresult = (event) => this.onKoreanRecognitionResult(event);
-                    this.recognitionKorean.onerror = (event) => this.handleRecognitionError(event, 'เกาหลี');
-                    this.recognitionKorean.onend = () => this.onKoreanRecognitionEnd();
+                    this.recognitionChinese.onstart = () => this.onChineseRecognitionStart(); 
+                    this.recognitionChinese.onresult = (event) => this.onChineseRecognitionResult(event); 
+                    this.recognitionChinese.onerror = (event) => this.handleRecognitionError(event, 'จีน'); 
+                    this.recognitionChinese.onend = () => this.onChineseRecognitionEnd(); 
                 } else {
-                    this.startKoreanBtn.disabled = true;
-                    this.updateStatus('เบราว์เซอร์ไม่รองรับการรู้จำเสียงภาษาเกาหลี', 'error');
+                    this.startChineseBtn.disabled = true; 
+                    this.updateStatus('เบราว์เซอร์ไม่รองรับการรู้จำเสียงภาษาจีน', 'error'); 
                 }
 
-                this.startKoreanBtn.addEventListener('click', () => this.startRecordingKorean());
-                this.stopKoreanBtn.addEventListener('click', () => this.stopRecordingKorean());
-                this.koreanListenText.addEventListener('input', () => this.updateTranslateButtonStates());
+                this.startChineseBtn.addEventListener('click', () => this.startRecordingChinese()); 
+                this.stopChineseBtn.addEventListener('click', () => this.stopRecordingChinese()); 
+                this.chineseListenText.addEventListener('input', () => this.updateTranslateButtonStates()); 
                 this.thaiTranslatedText.addEventListener('input', () => this.updateListenButtonStates());
-                this.translateKoreanToThaiBtn.addEventListener('click', () => this.translateKoreanToThai());
+                this.translateChineseToThaiBtn.addEventListener('click', () => this.translateChineseToThai()); 
                 this.listenThaiBtn.addEventListener('click', () => this.speakThaiText());
             }
 
-            startRecordingKorean() {
+            startRecordingChinese() { 
                 if (!this.geminiApiKey) {
                     this.updateStatus('กรุณาใส่ Gemini API Key ก่อนใช้งาน', 'error');
                     return;
                 }
-                if (this.isRecordingThai) { this.stopRecordingThai(); }
-                if (this.recognitionKorean && !this.isRecordingKorean) {
-                    this.recognitionKorean.start();
+                if (this.isRecordingThai) { this.stopRecordingThai(); } // Stop other recording if active
+                if (this.recognitionChinese && !this.isRecordingChinese) { 
+                    this.recognitionChinese.start(); 
                 }
             }
 
-            stopRecordingKorean() {
-                if (this.recognitionKorean && this.isRecordingKorean) {
-                    this.recognitionKorean.stop();
+            stopChineseRecording() { 
+                if (this.recognitionChinese && this.isRecordingChinese) { 
+                    this.recognitionChinese.stop(); 
                 }
-                this.isRecordingKorean = false;
-                this.startKoreanBtn.disabled = !this.geminiApiKey;
-                this.stopKoreanBtn.disabled = true;
-                this.startKoreanBtn.classList.remove('recording');
+                this.isRecordingChinese = false; 
+                this.startChineseBtn.disabled = !this.geminiApiKey; 
+                this.stopChineseBtn.disabled = true; 
+                this.startChineseBtn.classList.remove('recording'); 
             }
 
-            onKoreanRecognitionStart() {
-                this.isRecordingKorean = true;
-                this.updateStatus('กำลังฟัง (เกาหลี)... <span class="wave-animation"></span>', 'listening');
-                this.startKoreanBtn.disabled = true;
-                this.stopKoreanBtn.disabled = false;
-                this.startKoreanBtn.classList.add('recording');
-                this.koreanListenText.value = '';
+            onChineseRecognitionStart() { 
+                this.isRecordingChinese = true; 
+                this.updateStatus('กำลังฟัง (จีน)... <span class="wave-animation"></span>', 'listening'); 
+                this.startChineseBtn.disabled = true; 
+                this.stopChineseBtn.disabled = false; 
+                this.startChineseBtn.classList.add('recording'); 
+                this.chineseListenText.value = ''; 
                 this.thaiTranslatedText.value = '';
                 this.updateListenButtonStates();
             }
 
-            onKoreanRecognitionResult(event) {
+            onChineseRecognitionResult(event) { 
                 let finalTranscript = '';
                 let interimTranscript = '';
                 for (let i = event.resultIndex; i < event.results.length; i++) {
@@ -1072,34 +1098,34 @@
                         interimTranscript += transcript;
                     }
                 }
-                this.koreanListenText.value = finalTranscript + interimTranscript;
+                this.chineseListenText.value = finalTranscript + interimTranscript; 
                 if (finalTranscript) {
-                    this.updateStatus('พบข้อความเกาหลีแล้ว กำลังรอให้คุณพูดจบ...', 'success');
+                    this.updateStatus('พบข้อความจีนแล้ว กำลังรอให้คุณพูดจบ...', 'success'); 
                 }
                 this.updateTranslateButtonStates();
             }
 
-            onKoreanRecognitionEnd() {
-                this.stopRecordingKorean();
-                if (this.koreanListenText.value.trim()) {
-                    this.updateStatus('บันทึกเสียงเกาหลีเสร็จสิ้น กำลังแปลภาษา...', 'processing');
-                    this.translateKoreanToThai();
+            onChineseRecognitionEnd() { 
+                this.stopChineseRecording(); 
+                if (this.chineseListenText.value.trim()) { 
+                    this.updateStatus('บันทึกเสียงจีนเสร็จสิ้น กำลังแปลภาษา...', 'processing'); 
+                    this.translateChineseToThai(); 
                 } else {
-                    this.updateStatus('กดปุ่ม "เริ่มพูด (เกาหลี)" เพื่อเริ่มต้น', 'info');
+                    this.updateStatus('กดปุ่ม "เริ่มพูด (จีน)" เพื่อเริ่มต้น', 'info'); 
                 }
             }
 
-            async translateKoreanToThai() {
-                this.updateStatus('กำลังแปลภาษาเกาหลีเป็นไทย...', 'processing');
-                this.translateKoreanToThaiBtn.disabled = true;
+            async translateChineseToThai() { 
+                this.updateStatus('กำลังแปลภาษาจีนเป็นไทย...', 'processing'); 
+                this.translateChineseToThaiBtn.disabled = true; 
                 this.thaiTranslatedText.value = 'Translating...';
                 this.listenThaiBtn.disabled = true;
 
-                const result = await this.translateText(this.koreanListenText.value, 'Korean', 'Thai');
+                const result = await this.translateText(this.chineseListenText.value, 'Chinese', 'Thai'); 
                 this.thaiTranslatedText.value = result;
 
                 if (result && !result.startsWith('Error:')) {
-                    this.updateStatus('แปลภาษาเกาหลีเป็นไทยเสร็จสิ้น', 'success');
+                    this.updateStatus('แปลภาษาจีนเป็นไทยเสร็จสิ้น', 'success'); 
                     this.speakThaiText();
                 } else if (result.startsWith('Error:')) {
                     this.thaiTranslatedText.value = result;
